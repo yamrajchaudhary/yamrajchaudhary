@@ -1,0 +1,160 @@
+QUESTION- CAN A CLASS EXTEND ITSELF ?
+
+ANS- NO.A class cannot extend itself since it IS itself,
+ The definition of subclass is that it extends another class and
+ inherits the state and behaviors from that class. ...
+ Inner classes are allowed to extend the outer class because those are two different Classess..
+
+PROGRAM 1
+
+SOL-
+
+
+class X
+{
+    static void staticMethod()
+    {
+        System.out.println("Class X");
+    }
+}
+ 
+class Y extends X
+{
+    static void staticMethod()
+    {
+        System.out.println("Class Y");
+    }
+}
+ 
+public class MainClass
+{
+    public static void main(String[] args)
+    {
+        Y.staticMethod();
+    }
+}
+
+OUTPUT-class Y
+
+PROGRAM 2
+SOL-class M
+{
+    static
+    {
+        System.out.println('A');
+    }
+ 
+    {
+        System.out.println('B');
+    }
+ 
+    public M()
+    {
+        System.out.println('C');
+    }
+}
+ 
+class N extends M
+{
+    static
+    {
+        System.out.println('D');
+    }
+ 
+    {
+        System.out.println('E');
+    }
+ 
+    public N()
+    {
+        System.out.println('F');
+    }
+}
+ 
+public class MainClass
+{
+    public static void main(String[] args)
+    {
+        N n = new N();
+    }
+}
+
+OUTPUT- A D B C E F 
+
+
+
+PROGRAM 3
+
+SOL-
+
+class M
+{
+    int i;
+ 
+    public M(int i)
+    {
+        this.i = i--;
+    }
+}
+ 
+class N extends M
+{
+    public N(int i)
+    {
+        super(++i);
+ 
+        System.out.println(i);
+    }
+}
+ 
+public class MainClass
+{
+    public static void main(String[] args)
+    {
+        N n = new N(26);
+    }
+}
+
+OUTPUT- 27
+
+PROGRAM 4 
+
+SOL-
+
+class M
+{
+    int i = 51;
+ 
+    public M(int j)
+    {
+        System.out.println(i);
+ 
+        this.i = j * 10;
+    }
+}
+ 
+class N extends M
+{
+    public N(int j)
+    {
+        super(j);
+ 
+        System.out.println(i);
+ 
+        this.i = j * 20;
+    }
+}
+ 
+public class MainClass
+{
+    public static void main(String[] args)
+    {
+        N n = new N(26);
+ 
+        System.out.println(n.i);
+    }
+}
+
+OUTPUT- 51 260 520
+
+
