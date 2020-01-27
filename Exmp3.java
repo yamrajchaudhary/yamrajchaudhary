@@ -1,4 +1,5 @@
-package ex2;
+package com.ex2;
+
 
 import java.util.Arrays;
 import java.util.Scanner;
